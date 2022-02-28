@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+       <title>Gamepad tester</title>
+       <script type="text/javascript" src="./js/gamepad.js"></script>-
+       <link rel="stylesheet" type="text/css" href="./css/fallback/chrome-default-fallback.css">
+       <link rel="stylesheet" type="text/css" href="./css/style.css">-
+       <meta name="viewport" content="width=device-width, initial-scale=1.00, minimum-scale=1.00, maximum-scale=1.00, user-scalable=no">    
+    </head>
+    <body>
+        <div id="wrapper_all" style="display: none;" onload="document.getElementById('wrapper_all').style.display = 'block'">
+            <fieldset id="info-container">
+                <legend>Controller info</legend>
+                <div id="info"></div>
+            </fieldset>
+            <fieldset id="functions-container">
+                <legend>Functions</legend>
+                <h2>Gamepad Tester</h3>
+                <label for="gpid">Gamepad ID (0-3)</label>
+                <input id="gpid" type="number" min="0" max="3" value="0" onchange="gamepad.update.id()" /><br/><br/>
+
+                <label for="gpupdate">Make sure to press buttons before reloading, or else the gamepad API might not detect it.</label>
+                <br/><small-break/>
+                <button id="gpupdate" onclick="gamepad.update.load()">Reload gamepad</button>
+                <br/><br/>
+
+                <label for="updatetiming">Delay between auto-refreshes (milliseconds)</label><br/>
+                <small-break/>
+                <input id="updatetiming" type="number" max="5000" min="1" value="10" />
+                <br/><small-break/>
+                <button onclick="gamepad.startloop()">Start auto-refresh</button><br/>
+                <small-break/>
+                <span id="autostarted"></span>
+            </fieldset>
+            <fieldset id="buttons-container">
+                <legend>Buttons pressed</legend>
+                <div id="buttons"></div>
+                <div id="axes"></div>
+            </fieldset>
+            <fieldset id="rumble">
+                <legend>Rumble controller</legend>
+                <label for="length">Length of rumble (5000ms max)</label>
+                <input id="length" type="number" min="0" max="5000" value="1000"/><br/>
+                <label for="s1">Strength (weak motor)</label>
+                <input id="s1" type="number" min="0.0" max="1.0" value="1.0"/><br/>
+                <label for="s2">Strength (strong motor)</label>
+                <input id="s2" type="number" min="0.0" max="1.0" value="1.0"/><br/>
+                <button onclick="gamepad.rumble()">Rumble gamepad</button><br/>
+            </fieldset>
+            <fieldset id="out-container">
+                <legend>Output</legend>
+                <div id="out"></div>
+            </fieldset>
+
+            <fieldset id="ex-info" style="display: none;">
+                <h1>Gamepad tester</h1>
+                <h3>This is a simple game&shy;pad test&shy;er... More aim&shy;ed at devel&shy;opers</h3>
+            </fieldset>
+
+            <!-- Scripts: -->
+            <script type="text/javascript">gamepad.start();</script>
+            <script type="text/javascript">gamepad.update.id();</script>#
+        </div>
+        
+        <noscript>
+            This page requires javascript to run. Please enable javascript in your browser settings!
+        </noscript>
+    </body>
+</html>
